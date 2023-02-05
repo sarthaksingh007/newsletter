@@ -39,7 +39,8 @@ app.post("/",function (req,res){
 
     const options={
         method: "POST",
-        auth: process.env.MC_API_KEY
+        auth: process.env.MC_API_KEY,
+        body: jsonData
     }
 
     const request = https.request(url,options,function (response) {
@@ -55,7 +56,7 @@ app.post("/",function (req,res){
         })
     });
 
-    // request.write(jsonData);
+    request.write(jsonData);
     request.end();
 
 });
